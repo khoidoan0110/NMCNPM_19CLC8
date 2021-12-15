@@ -1638,13 +1638,13 @@ input[type="radio"] .styled:checked+label::after {
 .right_header_info {
     width: 100%;
     float: left;
-    padding: 8px 0 0;
+    padding: 8px 3px 0;
+	display: inline-block;
 }
 
 .right_header_info ul {
     list-style: none;
     padding: 0;
-    margin: 0;
     float: right;
 }
 
@@ -1657,6 +1657,28 @@ input[type="radio"] .styled:checked+label::after {
 .right_header_info ul li a {
     color: #fff;
     font-weight: 300;
+}
+.has-search .form-control {
+	width:100% ;
+    padding-left: 2.375rem;
+	padding-right:2.375rem;
+}
+.form-group.has-search{
+	width: 65%;
+	margin-right: 0;
+}
+
+.has-search .form-control-feedback {
+	margin: 10px auto;
+    position: absolute;
+    z-index: 3;
+    display: block;
+    width: 2.375rem;
+    height: 1rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
 }
 
 .slider_cont_section h4 {
