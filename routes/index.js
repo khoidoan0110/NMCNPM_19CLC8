@@ -1,11 +1,15 @@
 const SiteRouter = require('../routes/site');
 const loginRouter = require('../routes/login');
+const UserRouter = require('../routes/user');
 const createError = require('http-errors');
 
 function route(app){
     app.use('/',SiteRouter);
+    
     app.use('/login',loginRouter);
 
+    app.use('/user',UserRouter);
+    
   //catch 404 and forward to error handler
     app.use(function (req, res, next) {
         next(createError(404));

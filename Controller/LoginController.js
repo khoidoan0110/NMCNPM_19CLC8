@@ -5,9 +5,9 @@ class LoginController {
         res.render('login/login');
     }
 
-    //[GET] signup page /signup
-    signupPage(req, res) {
-        res.render('login/signup' );
+    //[GET] forget page /forget
+    forgetPage(req, res) {
+        res.render('login/forget' );
     }
 }
 

@@ -1646,6 +1646,7 @@ input[type="radio"] .styled:checked+label::after {
     list-style: none;
     padding: 0;
     float: right;
+	margin-right: 40px;
 }
 
 .right_header_info ul li {
@@ -1655,7 +1656,6 @@ input[type="radio"] .styled:checked+label::after {
 }
 
 .right_header_info ul li a {
-    color: #fff;
     font-weight: 300;
 }
 .has-search .form-control {
@@ -1669,7 +1669,6 @@ input[type="radio"] .styled:checked+label::after {
 }
 
 .has-search .form-control-feedback {
-	margin: 10px auto;
     position: absolute;
     z-index: 3;
     display: block;
@@ -2646,6 +2645,10 @@ padding: 60px 0px;
 }
 /** product_detail3 **/
 
+.dropdown-toggle::after {
+    display: none;
+}
+
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
@@ -2790,7 +2793,6 @@ a.article:hover {
     right: 0;
 }
 
-
 /*--login strat here--*/
 .login {
 	padding: 6em 0em;
@@ -2871,3 +2873,4 @@ a.article:hover {
 }
 
 /*--login end here--*/
+
