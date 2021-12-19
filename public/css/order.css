@@ -81,6 +81,7 @@
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
+    margin-bottom:200px;
 }
 
 .subtitle {
