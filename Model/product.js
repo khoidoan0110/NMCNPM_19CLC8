@@ -13,6 +13,7 @@ const product = new Schema({
     category: { type: String, required: true },
     description: { type: Array },
     publisher: { type: String, required: true },
+    amount: { type:Number, required: true },
     slug: { type: String, slug: 'name' }
 }, {
     timestamps: true
