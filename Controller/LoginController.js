@@ -49,7 +49,6 @@ class LoginController {
             confirmPassword,
             firstName,
             lastName,
-            number,
             address
         } = req.body;
         const checkExists = await loginService.FindByEmail(email);
@@ -60,7 +59,7 @@ class LoginController {
                 res.redirect('/login/signup?password-short');
             } else {
                 if (password === confirmPassword) {
-                    await loginService.register(email, password, firstName, lastName, number, address, req.headers.host);
+                    await loginService.register(email, password, firstName, lastName, address, req.headers.host);
                     res.redirect('/login/verify');
                 } else {
                     res.redirect('/login/signup?password-not-match');

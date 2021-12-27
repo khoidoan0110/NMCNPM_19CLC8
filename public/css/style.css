@@ -2302,9 +2302,29 @@ margin-top: 35px;
      padding: 7px 20px 20px 20px;
 }
 
+/*Verify page start here*/
+.verify{
+	min-height: 26.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.verify .verify-container {
+    padding: 7em 20em;
+    background-color: #0FBBAD;
+    color: white;
+}
 
+.verify .verify-container h1 {
+    text-align: center;
+    font-size: 3em;
+}
 
+.verify .verify-container p {
+    font-size: 1.5em;
+}
+/*Verify page end here*/
 
 /**Pagination*/
 .pagination .page-list {

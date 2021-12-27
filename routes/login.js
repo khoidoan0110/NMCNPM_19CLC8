@@ -6,9 +6,9 @@ const LoginController = require('../Controller/LoginController');
 router.get('/signup', LoginController.signupPage);
 router.post('/signup', LoginController.register);
 
-// //verify after resgister
-// router.get('/verify/:emailToken', loginController.activeNewAccount)
-// router.get('/verify', loginController.verifyPage);
+//verify after resgister
+router.get('/verify/:emailToken', LoginController.activeNewAccount)
+router.get('/verify', LoginController.verifyPage);
 
 //forget password
 // router.get('/forget', loginController.forgetPasswordPage)

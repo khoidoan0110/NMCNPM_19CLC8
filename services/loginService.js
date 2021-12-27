@@ -28,7 +28,7 @@ exports.register = async (email, password, firstName, lastName, address, host) =
         from: process.env.SHOP_GMAIL_USERNAME,
         to: email,
         subject: 'Email verification',
-        html: `<div style="background-color: #ea562dda; padding: 2em 2em;">
+        html: `<div style="background-color: #0fbbad; padding: 2em 2em;">
                     <h1 style="text-align: center;">Thank you for registering on our web</h1>
                     <h4 style="text-align: center;">Please click <a href="http://${host}/login/verify/${emailToken}">here</a> to activate your account</h4>
                 </div>`
