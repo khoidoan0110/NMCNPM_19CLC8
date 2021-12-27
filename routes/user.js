@@ -6,4 +6,6 @@ router.get('/information', UserController.InformationPage);
 
 router.get('/order', UserController.OrderPage);
 
+router.get('/logout', UserController.logOut);
+
 module.exports = router;
