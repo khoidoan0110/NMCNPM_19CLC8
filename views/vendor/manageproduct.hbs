@@ -1,54 +1,83 @@
 <link rel="stylesheet" href="/css/manageproduct.css">
-<div class="CartContainer">
-    <span class="pagetitle">PRODUCT LIST</span>
-    <ul class="Header">
-        <li class="text-center"><span>Product </span></li>
-        <li class="text-center"><span>Image</span> </li>
-        <li class="text-center"><span>Price</span></li>
-        <li class="text-center"><span>Category</span></li>
-        <li class="text-center"><span>Publisher</span></li>
-        <li class="text-center"><span>Stock</span></li>
-    </ul>
-    <div class="CartList">
-    <ul class="Cart-Items">
-        <li>
-          <span class="product-name">Spice & Wolf</span>
-        </li>
-        <li class="image-box">
-            <img src="/images/s&w.jpg" style="width:auto;height:85px;" />
-        </li>
-        <li>
-          	<span class="price">3$</span>
-        </li>
-        <li>
-          	<span class="category">Romantic</span>
-        </li>
-        <li>
-          	<span class="publisher">ASCII Media Works</span>
-        </li>
-        <li>
-          	<span class="stock">100</span>
-        </li>
-    </ul>	
-    <ul class="Cart-Items">
-        <li>
-          <span class="product-name">Wolfie The Bunny</span>
-        </li>
-        <li class="image-box">
-            <img src="/images/wolfie.jpg" style="width:auto;height:85px;" />
-        </li>
-        <li>
-            <span class="price">2.25$</span>
-        </li>
-        <li>
-            <span class="category">Comedy</span>
-        </li>
-        <li>
-            <span class="publisher">Little, Brown Books for Young Readers</span>
-        </li>
-        <li>
-          	<span class="stock">100</span>
-        </li>
-    </ul>	
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<style>
+    h1 {text-align: center; padding-top: 40px; padding-bottom: 20px;}
+    .icon-bar {
+        margin: auto;
+        width: 50%;
+        background-color: #555;
+        overflow: auto;
+    }
+    .icon-bar a {
+        float: left;
+        width: 50%;
+        text-align: center;
+        padding: 12px 0;
+        transition: all 0.3s ease;
+        color: white;
+        font-size: 24px;
+
+    }
+
+    .icon-bar a:hover {
+        background-color: #000;
+    }
+
+    .active {
+        background-color: #04AA6D;
+    }
+
+    .table tbody tr:hover td{
+        background-color: rgb(226, 226, 226);
+    }
+</style>
+<h1 style="color:#008000; font-weight:bold" >PRODUCT LIST</h1>
+<div class="iq-card-body" style="width: 80%; margin: auto">
+    <div class="table-responsive">
+        <table class="data-tables table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th width="10%" style="text-align: center;">Product Name</th>
+                <th width="7%" style="text-align: center;">Image</th>
+                <th width="5%" style="text-align: center;">Price (VND)</th>
+                <th width="5%" style="text-align: center;">Category</th>
+                <th width="10%" style="text-align: center;">Publisher</th>
+                <th width="5%" style="text-align: center;">Stock</th>
+                <th width="7%" style="text-align: center;">Date</th>
+                <th width="5%" style="text-align: center;">Sales</th>
+                <th width="10%" style="text-align: center;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align: center; font-size: large; vertical-align:middle">Spice & Wolf</td>
+                <td style="text-align: center;"><img src="/images/s&w.jpg" style="width:auto;height:100px; vertical-align:middle" /></td>
+                <td style="text-align: center; font-size: large; vertical-align:middle">69000</td> 
+                <td style="text-align: center; font-size: large; vertical-align:middle">Romance</td>
+                <td style="text-align: center; font-size: large; vertical-align:middle">ASCII Media Works</td>
+                <td style="text-align: center; font-size: large; vertical-align:middle">100</td>
+                <td style="text-align: center; font-size: large; vertical-align:middle">14-12-2021</td>
+                <td style="text-align: center; font-size: large; vertical-align:middle">10</td>
+                <td style="vertical-align:middle">
+                    <div class="icon-bar">
+                        <a class="active" href="#">
+                            <i class="fas fa-pencil-alt"></i>
+                        </a>
+                        <a class="active" href="#">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                {{!-- Second product here --}}
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/vendor/createproduct">
+    <button class="press create-button">
+        Create New Product
+    </button></a>
     </div>
 </div>
