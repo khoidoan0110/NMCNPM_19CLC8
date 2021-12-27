@@ -16,10 +16,10 @@ class LoginController {
     authenticate(req, res, next) {
         passport.authenticate('local', function (err, user) {
             if (err) return next(err);
+             //wrong password, email address
+             if (!user) return res.redirect('/login?wrong-login')
             //banned
             if (!user.status) return res.redirect('/login?banned');
-            //wrong password, email address
-            if (!user) return res.redirect('/login?wrong-login')
             req.logIn(user, function (err) {
                 if (err) return next(err);
                 //success

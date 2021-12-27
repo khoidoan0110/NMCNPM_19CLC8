@@ -27,6 +27,12 @@
                 </div>
 
             </form>
+            {{#if wrongLogin}}
+                    <h4 style="color:red; text-align: right;">Wrong password or email</h4>
+                    {{/if}}
+                    {{#if bannedLogin}}
+                    <h4 style="color:red; text-align: right;">Account is being banned</h4>
+                    {{/if}}
         </div>
     </div>
 </div>

@@ -11,8 +11,8 @@ router.get('/verify/:emailToken', LoginController.activeNewAccount)
 router.get('/verify', LoginController.verifyPage);
 
 //forget password
-// router.get('/forget', loginController.forgetPasswordPage)
-// router.post('/forget', loginController.sendNewPassword);
+router.get('/forget', LoginController.forgetPasswordPage);
+router.post('/forget', LoginController.sendNewPassword);
 
 router.get('/', LoginController.loginPage);
 router.post('/', LoginController.authenticate);

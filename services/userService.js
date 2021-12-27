@@ -15,7 +15,27 @@ const updateInfo = async (id, newInfo) => {
         console.log(err);
     }
 }
+const validateChangePass = async (id, pass) => {
+    try {
+        let customer = await user.findOne({ _id: id });
 
+        if (!bcrypt.compareSync(pass.oldPassword, customer.password)) {
+            return 1;  //wrong current password
+        } else if (pass.oldPassword === pass.newPassword) {
+            return 2; //change to old pass
+        } else if (pass.newPassword.length < 8) {
+            return 3; //pass too short   
+        } else if (pass.newPassword !== pass.rePassword) {
+            return 4; //retype invalid
+        } else {
+            customer.password = bcrypt.hashSync(pass.newPassword, 10);
+            await customer.save();
+            return 0; //success
+        }
+    } catch (err) {
+        console.log(err);
+    }
+}
 const applyForVendor= async (id) =>{
     try {
         await user.updateOne({ _id: id },{
@@ -40,4 +60,5 @@ module.exports = {
     updateInfo,
     getCustomer,
     applyForVendor,
+    validateChangePass,
 }

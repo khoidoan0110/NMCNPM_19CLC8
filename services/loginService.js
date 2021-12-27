@@ -4,23 +4,23 @@ const bcrypt = require('bcrypt')
 const salt = 10;
 const transporter = require('../utils/nodemailer');
 const crypto = require('crypto');
-require('dotenv').config;
 
-exports.FindByEmail = async (email) => {
+const FindByEmail = async (email) => {
     return await userModel.findOne({
         email: email,
     }).lean();
 }
 
-exports.validPassword = (password, user) => {
-    return bcrypt.compare(password, user.password);
+const validPassword = async (password, user) => {
+    const valid = await bcrypt.compare(password, user.password);
+    return valid;
 }
 
-exports.validateActive = (user) => {
+const validateActive = (user) => {
     return user.active;
 }
 
-exports.register = async (email, password, firstName, lastName, address, host) => {
+const register = async (email, password, firstName, lastName, address, host) => {
     const hashPassword = await bcrypt.hash(password, salt);
     const emailToken = crypto.randomBytes(20).toString('hex');;
 
@@ -50,7 +50,7 @@ exports.register = async (email, password, firstName, lastName, address, host) =
     const userID = await userModel.findOne({ email: email })
 }
 
-exports.activeNewAccount = async (emailToken) => {
+const activeNewAccount = async (emailToken) => {
     const account = await userModel.findOne({ emailToken: emailToken });
     if (account) {
         account.emailToken = null;
@@ -59,9 +59,8 @@ exports.activeNewAccount = async (emailToken) => {
     }
 }
 
-exports.sendNewPassword = async (email) => {
+const sendNewPassword = async (email) => {
     const account = await userModel.findOne({ email: email });
-
     if (account) {
         const newPass = (Math.random() + 1).toString(36).substring(2);
         account.password = await bcrypt.hash(newPass, salt);
@@ -82,4 +81,13 @@ exports.sendNewPassword = async (email) => {
 
         await account.save();
     }
+}
+
+module.exports = {
+    FindByEmail,
+    sendNewPassword,
+    activeNewAccount,
+    register,
+    validateActive,
+    validPassword,
 }

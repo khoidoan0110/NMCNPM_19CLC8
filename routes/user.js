@@ -2,6 +2,9 @@ const express=require('express');
 const router=express.Router();
 const UserController = require('../Controller/UserController');
 
+//change password
+router.get('/changepassword', UserController.changePassword);
+router.post('/changepassword/:id', UserController.storeNewPass);
 
 router.get('/order', UserController.OrderPage);
 

@@ -49,6 +49,25 @@ class UserController {
             req.session.save(function (err) { console.log(err); })
         }
     }
+
+    changePassword(req, res) {
+        res.render('user/changepassword');
+    }
+
+    async storeNewPass(req, res) {
+        const valid = await userService.validateChangePass(req.params.id, req.body);
+        if (valid === 1) {
+            res.render('user/changepassword', { message: "Wrong current password" });
+        } else if (valid === 2) {
+            res.render('user/changepassword', { message: "Cannot change the same password" });
+        } else if (valid === 3) {
+            res.render('user/changepassword', { message: "Password must contain at last 8 characters" });
+        } else if (valid === 4) {
+            res.render('user/changepassword', { message: "Retype does not match new password" });
+        } else {
+            res.render('user/changepassword', { success: "Password has been changed" });
+        }
+    }
 }
 
 module.exports = new UserController;
