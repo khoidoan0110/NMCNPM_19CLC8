@@ -6,6 +6,10 @@ class VendorController {
     CreateProduct(req, res) {
         res.render('vendor/createproduct');
     }
+    VendorApplied(req,res){
+        res.render('vendor/vendorapplied');
+
+    }
 }
 
 module.exports = new VendorController;

@@ -9,8 +9,11 @@ const app = express();
 
 //helper
 const hbs = require('hbs');
-hbs.registerHelper('compare', function (a, b) {
-  return a == b ? true : false;
+hbs.registerHelper('ifCond', function(v1, v2, options) {
+  if(v1 === v2) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
 });
 
 // view engine setup

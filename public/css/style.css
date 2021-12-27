@@ -2301,7 +2301,12 @@ margin-top: 35px;
      line-height: 23px;
      padding: 7px 20px 20px 20px;
 }
-
+/*User information start here*/
+.myaccount-main{
+	margin-top:50px;
+	margin-bottom:200px;
+}
+/*User information end here*/
 /*Verify page start here*/
 .verify{
 	min-height: 26.5em;
