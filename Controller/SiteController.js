@@ -10,10 +10,6 @@ class SiteController{
         res.render('index');
     }
 
-    Product(req,res){
-        res.render('product');
-    }
-
     SignUp(req,res){
         res.render("signup");
     }

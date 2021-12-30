@@ -3,8 +3,12 @@ class VendorController {
     ManageProduct(req, res) {
         res.render('vendor/manageproduct');
     }
-    Voucher(req, res){
-        res.render('vendor/voucher')
+    CreateProduct(req, res) {
+        res.render('vendor/createproduct');
+    }
+    VendorApplied(req,res){
+        res.render('vendor/vendorapplied');
+
     }
 }
 

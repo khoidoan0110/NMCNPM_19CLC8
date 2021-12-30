@@ -8,14 +8,16 @@ const ObjectId = Schema.ObjectId;
 const product = new Schema({
     id: ObjectId,
     name: { type: String, maxlength: 100, required: true },
-    vendor_id:ObjectId,
+    vendor_id: ObjectId,
     price: { type: Number, required: true },
     image: { type: String },
     category: { type: String, required: true },
     description: { type: String },
     publisher: { type: String, required: true },
     amount: { type:Number, required: true },
-    slug: { type: String, slug: 'name' }
+    slug: { type: String, slug: 'name' },
+    date: { type: Date },
+    sales: { type: Number }
 }, {
     timestamps: true
 });
