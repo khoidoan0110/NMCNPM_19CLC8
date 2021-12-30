@@ -49,15 +49,16 @@
             </tr>
         </thead>
         <tbody>
+        {{#each product}}
             <tr>
-                <td style="text-align: center; font-size: large; vertical-align:middle">Spice & Wolf</td>
-                <td style="text-align: center;"><img src="/images/s&w.jpg" style="width:auto;height:100px; vertical-align:middle" /></td>
-                <td style="text-align: center; font-size: large; vertical-align:middle">69000</td> 
-                <td style="text-align: center; font-size: large; vertical-align:middle">Romance</td>
-                <td style="text-align: center; font-size: large; vertical-align:middle">ASCII Media Works</td>
-                <td style="text-align: center; font-size: large; vertical-align:middle">100</td>
-                <td style="text-align: center; font-size: large; vertical-align:middle">14-12-2021</td>
-                <td style="text-align: center; font-size: large; vertical-align:middle">10</td>
+                <td style="text-align: center; font-size: large; vertical-align:middle">{{this.name}}</td>
+                <td style="text-align: center;"><img src={{this.image}} style="width:auto;height:100px; vertical-align:middle" /></td>
+                <td style="text-align: center; font-size: large; vertical-align:middle">{{this.price}}</td> 
+                <td style="text-align: center; font-size: large; vertical-align:middle">{{this.category}}</td>
+                <td style="text-align: center; font-size: large; vertical-align:middle">{{this.publisher}}</td>
+                <td style="text-align: center; font-size: large; vertical-align:middle">{{this.amount}}</td>
+                <td style="text-align: center; font-size: large; vertical-align:middle">{{this.createdAt}}</td>
+                <td style="text-align: center; font-size: large; vertical-align:middle">{{this.sales}}</td>
                 <td style="vertical-align:middle">
                     <div class="icon-bar">
                         <a class="active" href="#">
@@ -69,15 +70,27 @@
                     </div>
                 </td>
             </tr>
-            <tr>
-                {{!-- Second product here --}}
-            </tr>
+        {{/each}}
         </tbody>
-    </table>
+        <div class="col-md-12">
+            <div class="pagination col-md-12"style="margin-left:10px">
+                <ul class="page-list">
+                    <li class="page"><a href="#">&lt;&lt;</a></li>
+                    {{#each pages}}
+                    <li class=" page"><a href={{this.pageA}}>{{this.page}}</a></li>
+                    {{/each}}
+                    <li class="page"><a href="#">&gt;&gt;</a></li>
+                </ul>
+            </div>
 
-    <a href="/vendor/createproduct">
+        </div>
+        
+    </table>
+    <a href="/vendor/createproduct/{{vendor_id}}">
     <button class="press create-button">
         Create New Product
-    </button></a>
+    </button>
+            </a>
+
     </div>
 </div>

@@ -9,7 +9,7 @@ class ProductController {
         delete request.page;
 
         try {
-            const [product, pages, sort] = await productService.getListProduct(page);
+            const [product, pages] = await productService.getListProduct(page);
             res.render('product/all', { product, pages, currentPage: page });
         } catch (err) {
             console.log(err);

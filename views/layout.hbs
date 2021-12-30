@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
-    <title>niture</title>
+    <title>DonutBookStore</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -93,7 +93,7 @@
                                             <a class="dropdown-item" href="/user/order">Order</a>
                                             <a class="dropdown-item" href="/user/changepassword">Change password</a>
                                             {{#ifCond user.role 1}}
-                                            <a class="dropdown-item" href="/vendor/manageproduct">Manage Product</a>
+                                            <a class="dropdown-item" href="/vendor/manageproduct/{{user._id}}">Manage Product</a>
                                             {{/ifCond}}
                                             <a class="dropdown-item" href="/user/logout">Logout</a>
                                           </div>

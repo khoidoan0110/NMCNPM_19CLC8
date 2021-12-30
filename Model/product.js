@@ -8,7 +8,7 @@ const ObjectId = Schema.ObjectId;
 const product = new Schema({
     id: ObjectId,
     name: { type: String, maxlength: 100, required: true },
-    vendor_id: ObjectId,
+    vendor_id: { type: String, maxlength: 100, required: true },
     price: { type: Number, required: true },
     image: { type: String },
     category: { type: String, required: true },
@@ -16,8 +16,7 @@ const product = new Schema({
     publisher: { type: String, required: true },
     amount: { type:Number, required: true },
     slug: { type: String, slug: 'name' },
-    date: { type: Date },
-    sales: { type: Number }
+    sales: { type: Number,default:0 }
 }, {
     timestamps: true
 });
