@@ -2,6 +2,14 @@
 
 <div style ="width=100%; background:#0c9b8f; text-align:center; color:white; font-size:30px">Search Results</div>
 
+
+<div class="SortOptions">
+    <button type="button" class="btn btn-info">Best Selling</button>
+    <button type="button" class="btn btn-info">New Items</button>
+    <button type="button" class="btn btn-info">Low Price </button>
+    <button type="button" class="btn btn-info">High Price</button>
+</div>
+
 <div class="SearchContainer">
     <ol id="SearchList">
         {{#each products}}
@@ -13,9 +21,6 @@
             </li>
         {{/each}}
     </ol>
-<div class="SortOptions">
-    <li class="p-2 mb-1 text-left"><span>Sort by:</span></li>
-</div>
 
 <script src="/js/jquery.min.js"></script>
 
