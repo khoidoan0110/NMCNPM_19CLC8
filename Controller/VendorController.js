@@ -2,6 +2,10 @@ const productService = require('../services/productService');
 
 class VendorController {
     
+    ManageOrder(req, res){
+        res.render('vendor/manageorder');
+    }
+
     async ManageProduct(req, res) {
         const request = req.query;
         const page = request.page || 1;
