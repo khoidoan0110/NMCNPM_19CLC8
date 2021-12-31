@@ -55,6 +55,7 @@ class VendorController {
     }
 
     async StoreProduct(req,res){
+        const vendor_id=req.params.id;
     try {
             await productService.addNew(req.body, req.file,vendor_id);
             res.redirect(301, '/vendor/manageproduct/'+vendor_id);
