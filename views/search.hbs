@@ -2,6 +2,9 @@
 
 <div style ="width=100%; background:#0c9b8f; text-align:center; color:white; font-size:30px">Search Results</div>
 
+<div class="SortOptions">
+    <li class="p-2 mb-1 text-left"><span>Sort by:</span></li>
+</div>
 <div class="SearchContainer">
     <ol id="SearchList">
         {{#each products}}
@@ -13,16 +16,14 @@
             </li>
         {{/each}}
     </ol>
-<div class="SortOptions">
-    <li class="p-2 mb-1 text-left"><span>Sort by:</span></li>
-</div>
 
 <script src="/js/jquery.min.js"></script>
 
 <script>
+    $(document).ready(function() {
     $(window).scroll(function () {
     // End of the document reached?
-    if ($(document).height() - $(this).height() == $(this).scrollTop()) {
+    if ($("SearchContainer").height() - $(this).height() == $(this).scrollTop()) {
         $.ajax({
             type: "POST",
             url: "/search",
@@ -38,8 +39,7 @@
             }
         });
     }
-}); 
-    $(document).ready(function() {
+    });
 	$("div.input-card").hide();
     $("input[value$='card']").click(function() {
         $("div.input-card").show();
