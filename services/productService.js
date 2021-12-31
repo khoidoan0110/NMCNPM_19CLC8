@@ -1,6 +1,7 @@
 const product =require('../Model/product');
 const multer = require('multer');
 const upload = multer({dest: 'uploads/'});
+const fs = require('fs');
 
 const getListProduct = async (reqPage) => {
     let products = [];
@@ -86,9 +87,65 @@ const addNew = async (body, file,vendor_id) => {
     }
 }
 
+
+const deleleProduct = async (id) => {
+    try {
+        const delProduct = await product.findOne({ _id: id });
+
+        fs.unlink(product.image);
+
+        await delProduct.remove();
+    } catch (err) {
+        console.log(err);
+    }
+}
+const getEditProduct = async (id) => {
+    try {
+        const editProduct = await product.findOne({ _id: id }).lean();
+
+        return editProduct;
+    } catch (err) {
+        console.log(err);
+    }
+
+    return null;
+}
+
+const updateProduct = async (id, updatedProduct, file) => {
+    try {
+        if (file === undefined) {
+            await product.updateOne({ _id: id }, updatedProduct);
+            return await product.findById(id);
+
+        } else {
+            let oldProduct = await product.findById(id);
+            const path="./public"+oldProduct.image;
+            fs.unlink(path, (err) => {
+                if (err) {
+                    console.log("failed to delete local image:"+err);
+                } else {
+                    console.log('successfully deleted local image');                                
+                }
+        });
+            const image="/images/"+file.filename;  
+
+            updatedProduct.image = image;
+            await product.updateOne({ _id: id }, updatedProduct);
+            return await product.findById(id);
+        }
+
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+
 module.exports = {
     adjustDetail,
     getListProduct,
     getVendorProduct,
     addNew,
+    deleleProduct,
+    getEditProduct,
+    updateProduct,
 }
