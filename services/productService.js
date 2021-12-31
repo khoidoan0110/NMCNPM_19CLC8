@@ -3,12 +3,12 @@ const multer = require('multer');
 const upload = multer({dest: 'uploads/'});
 const fs = require('fs');
 
-const getListProduct = async (reqPage) => {
+const getListProduct = async (reqPage, query, search) => {
     let products = [];
     let pages = [];
 
     try {
-        products = await product.find({}).lean();
+        products = await product.find(query).lean();
         const perPage = 6;
         const page = parseInt(reqPage);
 
@@ -17,7 +17,7 @@ const getListProduct = async (reqPage) => {
         for (let i = 0; i < products.length / perPage; i++) {
             let temp = {};
             temp.page = i + 1;
-            temp.pageA = `?page=${i + 1}`;
+            temp.pageA = `?${search ? "search=" + search +"&" : ""}page=${i + 1}`;
             pages.push(temp);
         }
         products = products.slice(start, end);
