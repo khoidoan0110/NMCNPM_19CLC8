@@ -32,6 +32,36 @@ const getListProduct = async (reqPage) => {
         return [products, pages];
     } catch (error) {
         console.log(error)
+}
+}
+
+const SearchProduct = async (reqPage, query, search) => {
+    let products = [];
+    let pages = [];
+
+    try {
+        products = await product.find({}).lean();
+        const perPage = 6;
+        const page = parseInt(reqPage);
+
+        const start = (page - 1) * perPage;
+        const end = page * perPage;
+        for (let i = 0; i < products.length / perPage; i++) {
+            let temp = {};
+            temp.page = i + 1;
+            temp.pageA = `?${"search=" + search +"&"}page=${i + 1}`;
+            pages.push(temp);
+        }
+        products = products.slice(start, end);
+
+        products = products.map(item => {
+            let name = item.name.length < 25 ? item.name : (item.name.substring(0, 25) + '.....');
+            let slug = "/product/" + item.slug;
+           return { ...item, name: name, slug: slug }
+        })
+        return [products, pages];
+    } catch (error) {
+        console.log(error)
     }
     
 }
@@ -154,6 +184,7 @@ const updateProduct = async (id, updatedProduct, file) => {
 
 module.exports = {
     adjustDetail,
+    SearchProduct,
     getListProduct,
     getVendorProduct,
     addNew,

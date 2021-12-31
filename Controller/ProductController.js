@@ -9,7 +9,7 @@ class ProductController {
         delete request.page;
 
         try {
-            const [product, pages] = await productService.getListProduct(page, {});
+            const [product, pages] = await productService.getListProduct(page);
             res.render('product/all', { product, pages, currentPage: page });
         } catch (err) {
             console.log(err);
@@ -21,7 +21,7 @@ class ProductController {
         const page = request.page || 1;
         delete request.page;
         try {
-            const [product, pages] = await productService.getListProduct(page, {name: { $regex: request.search, $options: "i" }}, request.search);
+            const [product, pages] = await productService.SearchProduct(page, {name: { $regex: request.search, $options: "i" }}, request.search);
             res.render('product/search', { product, pages, currentPage: page, request});
         } catch (err) {
             console.log(err);

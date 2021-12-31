@@ -4,10 +4,13 @@ const VendorController = require('../Controller/VendorController');
 const upload = require('../utils/multer');
 
 router.get('/manageproduct/:id', VendorController.ManageProduct);
+router.get('/manageorder/:id', VendorController.ManageOrder);
 
 router.post('/deleteproduct/:id', VendorController.deleteProduct)
 
 router.get('/createproduct/:id', VendorController.CreateProduct);
+router.get('/managevoucher/:id', VendorController.ManageVoucher);
+router.get('/createvoucher/:id', VendorController.CreateVoucher);
 
 router.get('/vendorapplied', VendorController.VendorApplied);
 
