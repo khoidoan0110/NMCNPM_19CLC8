@@ -96,6 +96,7 @@
                                             <a class="dropdown-item" href="/user/changepassword">Change password</a>
                                             {{#ifCond user.role 1}}
                                             <a class="dropdown-item" href="/vendor/manageproduct/{{user._id}}">Manage Product</a>
+                                            <a class="dropdown-item" href="/vendor/managevoucher/{{user._id}}">Manage Voucher</a>
                                             {{/ifCond}}
                                             <a class="dropdown-item" href="/user/logout">Logout</a>
                                           </div>
