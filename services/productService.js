@@ -1,4 +1,6 @@
 const product =require('../Model/product');
+const user =require('../Model/user');
+
 const multer = require('multer');
 const upload = multer({dest: 'uploads/'});
 const fs = require('fs');
@@ -36,12 +38,15 @@ const getListProduct = async (reqPage) => {
 
 const adjustDetail = async (slug, reqPage) => {
     let detail = null;
+    let vendor = null;
     let pages = [];
     let len = 0;
 
     try {
         detail = await product.findOne({ slug: slug }).lean();
-        return [detail, pages, len];
+        vendor=await user.findOne({_id:detail.vendor_id}).lean(); 
+        console.log(vendor);
+        return [detail, vendor,pages, len];
     } catch (err) {
         console.log(err);
     }

@@ -30,8 +30,8 @@ class ProductController {
     async showDetail(req, res) {
         const page = req.query.page || 1;
         try {
-            const [detail, pages] = await productService.adjustDetail(req.params.slug, page);
-            res.render('product/product', { detail, pages, currentPage: page });
+            const [detail, vendor,pages] = await productService.adjustDetail(req.params.slug, page);
+            res.render('product/product', { detail,vendor, pages, currentPage: page });
         } catch (err) {
             console.log(err);
         }
