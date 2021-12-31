@@ -37,9 +37,8 @@ class VendorController {
 
     async deleteProduct(req, res) {
         try {
-         const productid=req.query.productid;
-         const vendor_id=req.params.id;
-        //await productService.deleleProduct(productid);
+        const productid=req.params.id;
+        const vendor_id=await productService.deleleProduct(productid);
         res.redirect(301, '/vendor/manageproduct/'+vendor_id);
     } catch (err) {
         console.log(err);
@@ -50,6 +49,12 @@ class VendorController {
         const book_id=req.params.id;
         const editProduct = await productService.getEditProduct(book_id);
         res.render('vendor/editProduct', { editProduct });
+    }
+
+    async deleteForm(req, res) {
+        const book_id=req.params.id;
+        const detail = await productService.getEditProduct(book_id);
+        res.render('vendor/deleteproduct', { detail });
     }
 
     //[PUT] store new product info to database

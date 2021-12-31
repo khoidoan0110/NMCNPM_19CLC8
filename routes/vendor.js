@@ -16,6 +16,7 @@ router.post('/store/:id', upload.single('image'), VendorController.StoreProduct)
 router.get('/:id/edit', VendorController.editForm);
 router.put('/edit/:id', upload.single('image'), VendorController.updateProduct);
 
-
+router.get('/:id/delete', VendorController.deleteForm);
+router.delete('/delete/:id', VendorController.deleteProduct);
 
 module.exports = router;

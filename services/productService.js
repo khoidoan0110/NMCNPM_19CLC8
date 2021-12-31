@@ -91,10 +91,17 @@ const addNew = async (body, file,vendor_id) => {
 const deleleProduct = async (id) => {
     try {
         const delProduct = await product.findOne({ _id: id });
-
-        fs.unlink(product.image);
-
+        const vendor_id=delProduct.vendor_id;
+        const path="./public"+delProduct.image;
+        fs.unlink(path, (err) => {
+                if (err) {
+                    console.log("failed to delete local image:"+err);
+                } else {
+                    console.log('successfully deleted local image');                                
+                }
+            });
         await delProduct.remove();
+        return vendor_id;
     } catch (err) {
         console.log(err);
     }
