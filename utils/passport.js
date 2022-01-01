@@ -10,11 +10,12 @@ passport.use(new LocalStrategy({
 },
   async function (email, password, done) {
     const user = await loginService.FindByEmail(email);
+    let pass=null;
     if (!user) {
       return done(null, false, { message: 'Incorrect email.' });
     }
     else{
-      const pass=await loginService.validPassword(password, user);
+      pass=await loginService.validPassword(password, user);
     }
     if (!pass) {
       return done(null, false, { message: 'Incorrect password.' });
