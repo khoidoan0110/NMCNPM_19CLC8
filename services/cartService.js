@@ -93,8 +93,34 @@ const addCart = async (userid,bookid,quantity)=>{
     await cartUser.save();
     return 0; //success
 }
+
+const getCart = async (userid,reqPage) => {
+    let cart = [];
+    let pages = [];
+
+    try {
+        const cartUser=await user.findOne({ _id: userid });
+        const perPage = 3;
+        const page = parseInt(reqPage);
+
+        const start = (page - 1) * perPage;
+        const end = page * perPage;
+        for (let i = 0; i < cartUser.cart.length / perPage; i++) {
+            let temp = {};
+            temp.page = i + 1;
+            temp.pageA = `?page=${i + 1}`;
+            pages.push(temp);
+        }
+        cartUser.cart =  cartUser.cart .slice(start, end);
+
+        return [cartUser, pages];
+    } catch (error) {
+        console.log(error)
+}
+}
 module.exports = {
     removeProductFromCart,
     updateCart,
-    addCart
+    addCart,
+    getCart
 }

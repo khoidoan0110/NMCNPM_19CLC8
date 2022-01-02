@@ -69,8 +69,10 @@ class UserController {
     }
 
     async Cart(req,res){
-        const cartuser =  await userService.getCustomer(res.locals.user._id);
-        res.render("cart", {cartuser});
+        const request = req.query;
+        const page = request.page || 1;
+        const [cartuser, pages] =  await cartService.getCart(res.locals.user._id,page);
+        res.render("cart", { cartuser, pages, currentPage: page });
     }
 
     async addCart(req,res){
