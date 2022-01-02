@@ -19,4 +19,6 @@ router.get('/information', UserController.InformationPage);
 //apply for vendor
 router.get('/applyforvendor/:id',UserController.applyForVendor);
 
+router.delete('/cart/:id', UserController.deleteCart);
+
 module.exports = router;
