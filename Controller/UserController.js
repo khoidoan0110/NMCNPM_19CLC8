@@ -79,7 +79,7 @@ class UserController {
         const bookid= req.body.bookid;
         const error = await cartService.addCart(userid, bookid,quantity);
         if (!error) {
-            res.redirect('/user/cart');
+            res.redirect(301,'/user/cart');
         } else res.send({ error }); //remove fail
     }
 
