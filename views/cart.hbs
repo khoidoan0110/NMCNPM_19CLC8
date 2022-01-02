@@ -24,7 +24,7 @@
       </div>
       <div class="product-price">{{this.price}}</div>
       <div class="product-quantity">
-        <input type="number" value={{this.quantity}} min="1" max={{this.amount}}>
+        <input type="number" value={{this.quantity}} min=1 max={{this.amount}} data-bookid={{this.id}} oninput="updateQuantity(event)">
       </div>
       <div class="product-removal" >
         <button class="remove-product" onclick="removeItem(event)" data-bookid={{this.id}}>
