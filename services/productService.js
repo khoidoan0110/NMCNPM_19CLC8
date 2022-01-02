@@ -59,6 +59,7 @@ const SearchProduct = async (reqPage, query, search) => {
             let slug = "/product/" + item.slug;
            return { ...item, name: name, slug: slug }
         })
+        products = products.sort((a, b) => b.sales - a.sales);
         return [products, pages];
     } catch (error) {
         console.log(error)
