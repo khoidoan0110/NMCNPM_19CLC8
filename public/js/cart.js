@@ -112,6 +112,7 @@ function addCart(e){
   const bookid = e.target.getAttribute("data-bookid");
   const quantity=document.getElementById('qty').value;
   const url = window.location.origin + `/user/cart/${bookid}`;
+  const noticeText = document.getElementById('add-cart-notice');
 
   fetch(url, {
     method: 'POST',
@@ -124,4 +125,11 @@ function addCart(e){
     }
   })
   .then(res => res.json())
+    .then(response => console.log('Success:', JSON.stringify(response)),
+      function(){
+        noticeText.innerText = '+ 1';
+        setTimeout(() => noticeText.innerText = '', 1000);
+
+      }
+    )
 }
