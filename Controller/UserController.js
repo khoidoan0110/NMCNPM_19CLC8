@@ -67,12 +67,14 @@ class UserController {
             res.render('user/changepassword', { success: "Password has been changed" });
         }
     }
-
+    CheckoutPage(req,res){
+        res.render('user/checkout');
+    }
     async Cart(req,res){
         const request = req.query;
         const page = request.page || 1;
         const [cartuser, pages] =  await cartService.getCart(res.locals.user._id,page);
-        res.render("cart", { cartuser, pages, currentPage: page });
+        res.render('cart', { cartuser, pages, currentPage: page });
     }
 
     async addCart(req,res){

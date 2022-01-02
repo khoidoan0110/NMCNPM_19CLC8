@@ -25,5 +25,5 @@ router.put('/cart/:id', UserController.updateCart);
 
 router.post('/cart/:id', UserController.addCart);
 
-
+router.get('/checkout',UserController.CheckoutPage);
 module.exports = router;
