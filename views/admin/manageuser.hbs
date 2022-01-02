@@ -7,27 +7,23 @@
         <table class="data-tables table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
-                <th width="3%" style="text-align: center;">ID</th>
                 <th width="5%" style="text-align: center;">First Name</th>
                 <th width="5%" style="text-align: center;">Last Name</th>
                 <th width="10%" style="text-align: center;">Email</th>
-                <th width="5%" style="text-align: center;">Stock</th>
-                <th width="7%" style="text-align: center;">Date</th>
-                <th width="5%" style="text-align: center;">Sales</th>
-                <th width="10%" style="text-align: center;">Action</th>
+                <th width="5%" style="text-align: center;">Role</th>
+                <th width="5%" style="text-align: center;">Status</th>
+                <th width="5%" style="text-align: center;">Activity</th>
             </tr>
         </thead>
         <tbody>
-        {{#each product}}
+        {{#each user}}
             <tr>
-                <td style="text-align: center; font-size: large; vertical-align:middle">{{this.name}}</td>
-                <td style="text-align: center;"><img src={{this.image}} style="width:auto;height:100px; vertical-align:middle" /></td>
-                <td style="text-align: center; font-size: large; vertical-align:middle">{{this.price}}</td> 
-                <td style="text-align: center; font-size: large; vertical-align:middle">{{this.category}}</td>
-                <td style="text-align: center; font-size: large; vertical-align:middle">{{this.publisher}}</td>
-                <td style="text-align: center; font-size: large; vertical-align:middle">{{this.amount}}</td>
-                <td style="text-align: center; font-size: large; vertical-align:middle">{{this.createdAt}}</td>
-                <td style="text-align: center; font-size: large; vertical-align:middle">{{this.sales}}</td>
+                <td style="text-align: center; font-size: large; vertical-align:middle">{{this.firstName}}</td> 
+                <td style="text-align: center; font-size: large; vertical-align:middle">{{this.lastName}}</td>
+                <td style="text-align: center; font-size: large; vertical-align:middle">{{this.email}}</td>
+                <td style="text-align: center; font-size: large; vertical-align:middle">{{this.role}}</td>
+                <td style="text-align: center; font-size: large; vertical-align:middle">{{this.status}}</td>
+                <td style="text-align: center; font-size: large; vertical-align:middle">{{this.active}}</td>
                 <td style="vertical-align:middle">
                     <div class="icon-bar">
                         <a class="active" href="#">
