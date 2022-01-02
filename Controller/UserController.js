@@ -1,5 +1,6 @@
 const userService = require('../services/userService.js');
 const CircularJSON=require('circular-json');
+const cartService = require('../services/cartService.js');
 
 class UserController {
     //[GET] infomation page /user
@@ -70,8 +71,19 @@ class UserController {
     }
 
     async Cart(req,res){
-        const user =  await userService.getCustomer(res.locals.user._id);
-        res.render("cart", user);
+        const cartuser =  await userService.getCustomer(res.locals.user._id);
+        console.log(cartuser);
+        res.render("cart", {cartuser});
+    }
+
+    async deleteCart(req, res) {
+        const bookID = req.body.bookID;
+        const userID = req.body.userID;
+        const vendorID = req.body.vendorID;
+        const error = await cartService.removeProductFromCart(userID, bookID,vendorID);
+        if (!error) {
+            res.redirect(301, "/user/cart/");
+        } else res.send({ error }); //remove fail
     }
 }
 

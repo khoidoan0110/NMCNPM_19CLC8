@@ -8,11 +8,6 @@ $('.product-quantity input').change( function() {
   updateQuantity(this);
 });
 
-$('.product-removal button').click( function() {
-  removeItem(this);
-});
-
-
 /* Recalculate cart */
 function recalculateCart()
 {
@@ -61,14 +56,38 @@ function updateQuantity(quantityInput)
   });  
 }
 
+$(document).ready(function() {
+  recalculateCart();
+});
 
 /* Remove item from cart */
-function removeItem(removeButton)
+function removeItem(e)
 {
   /* Remove row from DOM and recalc cart total */
-  var productRow = $(removeButton).parent().parent();
-  productRow.slideUp(fadeTime, function() {
-    productRow.remove();
-    recalculateCart();
-  });
+  var productRow = $(e.target).parent().parent();
+  var vendorRow=productRow.parent()[0];
+  const bookID=e.target.getAttribute("data-bookid");
+  const vendorID=vendorRow.getAttribute("data-vendorid");
+  const userID = document.getElementById('user-id').getAttribute("data-userid");
+  const url=window.location.origin + `/user/cart/${bookID}`;
+
+  console.log(url);
+
+  fetch(url, {
+    method: 'DELETE',
+    body: JSON.stringify({ userID,vendorID, bookID}),
+    headers: {
+        'Content-type': 'application/json; charset=UTF-8'
+    }
+})
+.then(res => res.json())
+.then(response => console.log('Success:', JSON.stringify(response)), 
+productRow.slideUp(fadeTime, function() {
+  console.log("Success");
+  productRow.remove();
+  if(!vendorRow.querySelector("#product")) vendorRow.remove();
+  recalculateCart();
+})
+)
+
 }
