@@ -7,6 +7,7 @@
         <table class="data-tables table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
+                <th width="5%" style="text-align: center;">ID</th>
                 <th width="5%" style="text-align: center;">First Name</th>
                 <th width="5%" style="text-align: center;">Last Name</th>
                 <th width="10%" style="text-align: center;">Email</th>
@@ -18,22 +19,18 @@
         <tbody>
         {{#each user}}
             <tr>
+                <td class = "userid" style="text-align: center; font-size: large; vertical-align:middle">{{this._id}}</td>
                 <td style="text-align: center; font-size: large; vertical-align:middle">{{this.firstName}}</td> 
                 <td style="text-align: center; font-size: large; vertical-align:middle">{{this.lastName}}</td>
                 <td style="text-align: center; font-size: large; vertical-align:middle">{{this.email}}</td>
                 <td style="text-align: center; font-size: large; vertical-align:middle">{{this.role}}</td>
-                <td style="text-align: center; font-size: large; vertical-align:middle">{{this.status}}</td>
-                <td style="text-align: center; font-size: large; vertical-align:middle">{{this.active}}</td>
-                <td style="vertical-align:middle">
-                    <div class="icon-bar">
-                        <a class="active" href="#">
-                            <i class="fas fa-pencil-alt"></i>
-                        </a>
-                        <a class="active" href="#">
-                            <i class="fas fa-trash-alt"></i>
-                        </a>
-                    </div>
+                <td style="text-align: center; font-size: large; vertical-align:middle">
+                    <button class="statbut" value = "{{this.status}}">
+                        {{#if this.status}} <i class="fas fa-check" style="color:white"></i>{{/if}}
+                        {{#unless this.status}}<i class="fas fa-ban" style="color:white"></i>{{/unless}}
+                    </button>
                 </td>
+                <td style="text-align: center; font-size: large; vertical-align:middle">{{this.active}}</td>
             </tr>
         {{/each}}
         </tbody>
