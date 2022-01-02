@@ -1,5 +1,4 @@
 const userService = require('../services/userService.js');
-const CircularJSON=require('circular-json');
 const cartService = require('../services/cartService.js');
 
 class UserController {
@@ -38,7 +37,6 @@ class UserController {
         const valid = await userService.applyForVendor(req.params.id);
         if (valid) {
             const customer = await userService.getCustomer(req.params.id);
-            console.log(customer.role);
             req.session.passport.user = customer;
             req.session.message = "ok";
             req.session.save(function (err) {
@@ -73,6 +71,16 @@ class UserController {
     async Cart(req,res){
         const cartuser =  await userService.getCustomer(res.locals.user._id);
         res.render("cart", {cartuser});
+    }
+
+    async addCart(req,res){
+        const userid =  res.locals.user._id;
+        const quantity=parseInt(req.body.quantity);
+        const bookid= req.body.bookid;
+        const error = await cartService.addCart(userid, bookid,quantity);
+        if (!error) {
+            res.redirect('/user/cart');
+        } else res.send({ error }); //remove fail
     }
 
     async deleteCart(req, res) {

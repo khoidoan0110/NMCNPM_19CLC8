@@ -76,7 +76,6 @@ const adjustDetail = async (slug, reqPage) => {
     try {
         detail = await product.findOne({ slug: slug }).lean();
         vendor=await user.findOne({_id:detail.vendor_id}).lean(); 
-        console.log(vendor);
         return [detail, vendor,pages, len];
     } catch (err) {
         console.log(err);

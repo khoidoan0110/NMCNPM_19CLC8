@@ -107,3 +107,21 @@ function removeItem(e) {
       })
     )
 }
+
+function addCart(e){
+  const bookid = e.target.getAttribute("data-bookid");
+  const quantity=document.getElementById('qty').value;
+  const url = window.location.origin + `/user/cart/${bookid}`;
+
+  fetch(url, {
+    method: 'POST',
+    body: JSON.stringify({
+      bookid,
+      quantity
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8'
+    }
+  })
+  .then(res => res.json())
+}
