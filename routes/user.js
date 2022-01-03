@@ -30,4 +30,6 @@ router.get('/checkout',UserController.CheckoutPage);
 router.put('/checkout/applyvoucher/:id',UserController.applyVoucher);
 
 router.post('/checkout/:id',UserController.checkOut);
+
+router.delete('/order/:id',UserController.cancelOrder);
 module.exports = router;

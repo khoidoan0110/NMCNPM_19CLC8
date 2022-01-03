@@ -94,10 +94,21 @@ const getOrderByVendor = async(reqPage,vendor_id)=>{
         console.log(error)
     }
 }
-
+const cancelOrder = async (order_id) => {
+    try {
+        const getOrder = await order.findOne({ _id: order_id });
+        getOrder.cancel=true;
+        await getOrder.markModified('cancel');
+        await getOrder.save();
+        return 0; //success
+    } catch (err) {
+        console.log(err);
+    }
+}
 module.exports = {
     checkOut,
     getOrderByVendor,
-    getOrdersByUser
+    getOrdersByUser,
+    cancelOrder
 }
 

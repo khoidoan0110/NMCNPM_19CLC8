@@ -133,7 +133,13 @@ class UserController {
         } else res.send({ error }); //remove fail
 
     }
-
+    async cancelOrder(req,res){
+        const order_id=req.params.id;
+        const error = await orderService.cancelOrder(order_id);
+        if (!error) {
+            res.redirect(301,'/user/order');
+        } else res.send({ error }); //remove fail
+    }
     async checkOut(req,res){
         const cardNumber=req.body.cardNumber;
 

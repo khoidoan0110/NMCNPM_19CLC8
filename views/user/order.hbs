@@ -42,7 +42,7 @@
             </table>
             <div class="line"></div>
             {{#if this.cancel }}
-            {{else}} <button class="button cancel" data-orderid={{this._id}} onlick="cancelOrder(e)">
+            {{else}} <button class="button cancel" data-orderid={{this._id}} onclick="cancelOrder(event)">
                 Cancel Order
             </button>
             {{/if}}
