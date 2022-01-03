@@ -1,1 +1,117 @@
-<h1>Heelo</h1>
+<link rel="stylesheet" href="/css/order.css">
+<div class="container">
+    <article class="card">
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+        <h1 style="color:#008000; font-weight:bold">CHECKOUT</h1>
+        <div class="card-body">
+            <article class="card">
+                <div class="card-body row">
+                    <div class="col"> <strong>Order ID:</strong> ODID1 </div>
+                    <div class="col"> <strong>Voucher:</strong>
+                        <input type="text" placeholder="Your Code..." style="box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.5);">
+                    </div>
+                    <div class="col"> <strong>Total:</strong> 190.000 VND </div>
+                </div>
+            </article>
+
+            <table class="data-tables table table-bordered" style="width:100%">
+                <thead style="background-color: #48AAAD; color: white">
+                <tr>
+                    <th width="7%" style="text-align: center;">Item</th>
+                    <th width="10%" style="text-align: center;">Product Name</th>
+                    <th width="3%" style="text-align: center;">Amount</th>
+                    <th width="3%" style="text-align: center;">Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><img src="/images/s&w.jpg" style="width:auto;height:100px; vertical-align:middle"></td>
+                    <td>Spice & Wolf</td>
+                    <td>2</td>
+                    <td>69.000</td>
+                </tr>
+                <tr>
+                    <td><img src="/images/wolfie.jpg" style="width:auto;height:100px; vertical-align:middle"></td>
+                    <td>Wolfie The Bunny</td>
+                    <td>1</td>
+                    <td>52.000</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="line"></div>
+        </div>
+
+        <div class="card-body">
+            <article class="card">
+            <div class="card-body row">
+                <div class="col"> <strong>Order ID:</strong> ODID2 </div>
+                <div class="col"> <strong>Voucher:</strong>
+                    <input type="text" placeholder="Your Code..." style="box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.5);">
+                </div>
+                <div class="col"> <strong>Total:</strong> 110.000 VND </div>
+            </div>
+            </article>
+
+            <table class="data-tables table table-bordered" style="width:100%">
+                <thead style="background-color: #48AAAD; color: white">
+                <tr>
+                    <th width="7%" style="text-align: center;">Item</th>
+                    <th width="10%" style="text-align: center;">Product Name</th>
+                    <th width="3%" style="text-align: center;">Amount</th>
+                    <th width="3%" style="text-align: center;">Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><img src="/images/attwn.jpg" style="width:auto;height:100px; vertical-align:middle"></td>
+                    <td>And Then There Were None</td>
+                    <td>1</td>
+                    <td>110.000</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="line"></div>
+        </div>
+    </article>
+
+    {{!-- Payment Information --}}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" style="margin-bottom: -10px;"><p class="fw-bold" style="font-size: large; font-weight: bold;">PAYMENT METHOD</p></h5>
+                    <label for="chkYes">
+                        <input type="radio" id="chkYes" name="chk" onclick="ShowHideDiv()" />
+                        Credit Card
+                    </label>
+                    <label for="chkNo">
+                        <input type="radio" id="chkNo" name="chk" onclick="ShowHideDiv()" />
+                        Cash
+                    </label>
+                    <br>
+                    <div id="dvtext" style="display: none">
+                        Card Number:
+                        <input type="text" id="txtBox" style="box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.5);"/>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" style="margin-bottom: -10px;"><p class="fw-bold" style="font-size: large; font-weight: bold;">USER INFORMATION</p></h5>
+                        <p class="card-text">
+                            Name: {{user.firstName}} {{user.lastName}} <br>
+                            Address: {{user.address}}
+                        </p>
+
+                        <a href="#" class="btn btn-outline-primary btn-sm">
+                            CONFIRM CHECKOUT
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
