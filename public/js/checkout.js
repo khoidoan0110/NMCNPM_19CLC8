@@ -33,3 +33,5 @@ function checkout(e){
     const delForm = document.forms['forms-checkout'];
 
 }
+
+$("input:radio").change(function () {$("#confirm").prop("disabled", false);});

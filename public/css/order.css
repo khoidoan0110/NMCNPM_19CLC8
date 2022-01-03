@@ -108,3 +108,23 @@ td{
     border: 1px solid black;
     border-radius: 0.10rem
 }
+
+.apply_voucher{
+    border: 1px black;
+    border-style: solid;
+    border-right-width: 1px;
+    background-color: lime;
+}
+
+.apply_voucher:after {
+    content: "\276f";
+    padding: 0.5em;
+    position: relative;
+    right: 0;
+}
+.apply_voucher:hover, .apply_voucher:focus, .apply_voucher:active {
+    background: #f69679;
+}
+.apply_voucher:hover:after, .apply_voucher:focus:after, .apply_voucher:active:after {
+    right: -5px;
+}

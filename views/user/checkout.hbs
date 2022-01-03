@@ -58,7 +58,7 @@
                             <h5 class="card-title" style="margin-bottom: -10px;">
                                 <p class="fw-bold" style="font-size: large; font-weight: bold;">PAYMENT METHOD</p>
                             </h5>
-                            <div class="col"> <strong>Voucher:</strong>
+                            <div class="col" style="padding-bottom: 15px;"> <strong>Voucher:</strong>
                                 {{#if cartuser.voucher_applied}}
                                 <input id="voucher_id" type="text" placeholder="Your Code..."
                                     style="box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.5);" value={{cartuser.voucher_applied}}
@@ -67,7 +67,7 @@
                                 {{else}}
                                 <input id="voucher_id" type="text" placeholder="Your Code..."
                                     style="box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.5);">
-                                <button data-userid={{cartuser._id}} onclick="applyVoucher(event)">Apply</button>
+                                <button data-userid={{cartuser._id}} onclick="applyVoucher(event)" class="apply_voucher">Apply</button>
                                 {{/if}}
 
                             </div>
@@ -98,9 +98,9 @@
                                 Address: {{cartuser.address}}
                             </p>
 
-                            <button type="submit" class="btn btn-outline-primary btn-sm">
-                                CONFIRM CHECKOUT
-                            </a>
+                        <button class="btn btn-outline-primary btn-sm" id="confirm" disabled="disabled">
+                            CONFIRM CHECKOUT
+                        </button>
                         </div>
                     </div>
                 </div>
