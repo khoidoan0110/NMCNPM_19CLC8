@@ -14,7 +14,6 @@ class UserController {
         const request = req.query;
         const page = request.page || 1;
         delete request.page;
-        console.log(req);
         try {
         const [order,pages]=await orderService.getOrdersByUser(page,userid);
         res.render('user/order',{order, pages, currentPage: page });
@@ -142,7 +141,6 @@ class UserController {
     }
     async checkOut(req,res){
         const cardNumber=req.body.cardNumber;
-
         const orders=await orderService.checkOut(req.params.id,cardNumber);
         if (!orders) {
             res.redirect(301,'/user/order');

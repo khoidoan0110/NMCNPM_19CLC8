@@ -12,7 +12,7 @@ const order = new Schema({
     vendor_id:{type: String, required:true},
     total: { type: Number, required: true },
     method:{type: Number, required:true},
-    card_number:{type: Number},
+    card_number:{type: Number,default:0},
     address:{type:String, required:true},
     firstName:{type:String, required:true},
     lastName:{type:String, required:true},

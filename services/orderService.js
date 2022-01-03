@@ -6,11 +6,10 @@ const checkOut=async (userid,cardNumber)=>{
     try{
     const cartUser=await user.findOne({ _id: userid });
     var method=1;
-    if(cardNumber===undefined) {
+    console.log(cardNumber);
+    if(cardNumber==="") {
         method=0;
-        cardNumber=0;
     }
-
     for (let i = 0; i < cartUser.cart.length; i++){
 
 
@@ -21,8 +20,8 @@ const checkOut=async (userid,cardNumber)=>{
         var firstName=cartUser.firstName;
         var lastName=cartUser.lastName;
         var products=cartUser.cart[i].items;
-
-        var new_order =new order({userID:userid,products,voucher_applied,vendor_id,total,method,cardNumber,firstName,lastName,address});
+        var card_number=cardNumber;
+        var new_order =new order({userID:userid,products,voucher_applied,vendor_id,total,method,card_number,firstName,lastName,address});
         await new_order.save();
         for(let j = 0; j < cartUser.cart[i].items.length; j++){
             var book=await product.findOne({_id:cartUser.cart[i].items[j].id});

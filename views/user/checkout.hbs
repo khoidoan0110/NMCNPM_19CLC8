@@ -79,10 +79,7 @@
                                 Cash
                             </label>
                             <br>
-                            <div id="dvtext" style="display: none">
-                                Card Number:
-                                <input type="text" id="cardNumber" name="cardNumber"style="box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.5);" />
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -92,11 +89,16 @@
                             <h5 class="card-title" style="margin-bottom: -10px;">
                                 <p class="fw-bold" style="font-size: large; font-weight: bold;">USER INFORMATION</p>
                             </h5>
+                                                    <form name="forms-checkout" method="POST"action='checkout/{{cartuser._id}}'>
+
                             <p class="card-text">
                                 Name: {{cartuser.firstName}} {{cartuser.lastName}} <br>
                                 Address: {{cartuser.address}}
                             </p>
-                        <form name="forms-checkout" method="POST"action='checkout/{{cartuser._id}}'>
+                            <div id="dvtext" style="display: none">
+                                Card Number:
+                                <input type="text" id="cardNumber" name="cardNumber"style="box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.5);" />
+                            </div>
                         <button class="btn btn-outline-primary btn-sm" id="confirm" disabled="disabled">
                             CONFIRM CHECKOUT
                         </button>
