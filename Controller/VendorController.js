@@ -16,7 +16,14 @@ class VendorController {
         console.log(err);
     }
     }
-
+    async changeStatusOrder(req,res){
+        const order_id=req.params.id;
+        const status=req.body.status;
+        const error = await orderService.changeStatus(order_id,status);
+        if (!error) {
+            res.redirect(301,'/vendor/manageorder');
+        } else res.send({ error }); //remove fail
+    }
     async ManageProduct(req, res) {
         const request = req.query;
         const page = request.page || 1;

@@ -104,10 +104,23 @@ const cancelOrder = async (order_id) => {
         console.log(err);
     }
 }
+
+const changeStatus = async (order_id,status) => {
+    try {
+        const getOrder = await order.findOne({ _id: order_id });
+        getOrder.status=status;
+        await getOrder.markModified('cancel');
+        await getOrder.save();
+        return 0; //success
+    } catch (err) {
+        console.log(err);
+    }
+}
 module.exports = {
     checkOut,
     getOrderByVendor,
     getOrdersByUser,
-    cancelOrder
+    cancelOrder,
+    changeStatus
 }
 

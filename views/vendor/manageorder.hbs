@@ -8,14 +8,20 @@
             <article class="card">
                 <div class="card-body row">
                     <div class="col"> <strong>Order ID:{{this._id}}</strong> </div>
-                    <div class="col"><strong>Status:</strong>
-                        <select name="status" id="status" value={{this.status}}>
-                            <option value="confirmed">Confirmed</option>
-                            <option value="shipped">Shipped</option>
-                            <option value="packed">Packed</option>
-                            <option value="done">Done</option>
+                    {{#if this.cancel}}
+                    <div class="col"> <strong>Current status:Cancelled</strong> </div>
+                    {{else}}
+                    <div class="col"> <strong>Current status:{{this.status}}</strong> </div>
+                    <div class="col"><strong>Change status:</strong>
+                        <select name="status" id="status" data-orderid={{this._id}} value={{this.status}} oninput="changeStatus(event)">
+                            <option value="Confirmed">Confirmed</option>
+                            <option value="Shipped">Shipped</option>
+                            <option value="Packed">Packed</option>
+                            <option value="Done">Done</option>
                         </select>
                     </div>
+                    {{/if}}
+                    
                     <div class="col"> <strong>Voucher:</strong>{{this.voucher_applied}} </div>
                     <div class="col"> <strong>Total:</strong> {{this.total}} </div>
                 </div>
