@@ -46,8 +46,58 @@ const checkOut=async (userid,cardNumber)=>{
         return 1;
     }
 }
+const getOrdersByUser = async(reqPage,user_id)=>{
+    let orders = [];
+    let pages = [];
+
+    try {
+        orders = await order.find({userID:user_id}).lean();
+        const perPage = 8;
+        const page = parseInt(reqPage);
+
+        const start = (page - 1) * perPage;
+        const end = page * perPage;
+        for (let i = 0; i < orders.length / perPage; i++) {
+            let temp = {};
+            temp.page = i + 1;
+            temp.pageA = `?page=${i + 1}`;
+            pages.push(temp);
+        }
+        orders = orders.slice(start, end);
+
+        return [orders, pages];
+    } catch (error) {
+        console.log(error)
+    }
+}
+const getOrderByVendor = async(reqPage,vendor_id)=>{
+    let orders = [];
+    let pages = [];
+
+    try {
+        orders = await order.find({vendor_id:vendor_id}).lean();
+        const perPage = 8;
+        const page = parseInt(reqPage);
+
+        const start = (page - 1) * perPage;
+        const end = page * perPage;
+        for (let i = 0; i < orders.length / perPage; i++) {
+            let temp = {};
+            temp.page = i + 1;
+            temp.pageA = `?page=${i + 1}`;
+            pages.push(temp);
+        }
+        orders = orders.slice(start, end);
+
+        return [orders, pages];
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 module.exports = {
-    checkOut
+    checkOut,
+    getOrderByVendor,
+    getOrdersByUser
 }
 

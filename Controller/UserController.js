@@ -9,8 +9,18 @@ class UserController {
     }
 
     //[GET] order page /order
-    OrderPage(req, res) {
-        res.render('user/order');
+    async OrderPage(req, res) {
+        const userid =  res.locals.user._id;
+        const request = req.query;
+        const page = request.page || 1;
+        delete request.page;
+        console.log(req);
+        try {
+        const [order,pages]=await orderService.getOrdersByUser(page,userid);
+        res.render('user/order',{order, pages, currentPage: page });
+    } catch (err) {
+        console.log(err);
+    }
     }
 
     logOut(req, res) {

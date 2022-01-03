@@ -27,7 +27,7 @@ router.post('/cart/:id', UserController.addCart);
 
 router.get('/checkout',UserController.CheckoutPage);
 
-router.put('/checkout/:id',UserController.applyVoucher);
+router.put('/checkout/applyvoucher/:id',UserController.applyVoucher);
 
 router.post('/checkout/:id',UserController.checkOut);
 module.exports = router;
