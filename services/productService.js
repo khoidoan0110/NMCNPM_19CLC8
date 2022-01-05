@@ -72,6 +72,23 @@ const SearchProduct = async (reqPage, query, search, sort) => {
 
     try {
         products = await product.find(query).lean();
+
+        if (sort == "newproduct") {
+            products.sort(function(a, b) {
+            var keyA = new Date(a.createdAt),
+              keyB = new Date(b.createdAt);
+            if (keyA < keyB) return -1;
+            if (keyA > keyB) return 1;
+            return 0;
+            });
+        } else if (sort == "lowprice") {
+            products = products.sort((a, b) => a.price - b.price);
+        } else if (sort == "highprice") {
+            products = products.sort((a, b) => b.price - a.price);
+        } else {
+            products = products.sort((a, b) => b.sales - a.sales);
+        }
+        
         const perPage = 6;
         const page = parseInt(reqPage);
 
@@ -90,22 +107,6 @@ const SearchProduct = async (reqPage, query, search, sort) => {
             let slug = "/product/" + item.slug;
            return { ...item, name: name, slug: slug }
         })
-
-        if (sort == "newproduct") {
-            products.sort(function(a, b) {
-            var keyA = new Date(a.createdAt),
-              keyB = new Date(b.createdAt);
-            if (keyA < keyB) return -1;
-            if (keyA > keyB) return 1;
-            return 0;
-            });
-        } else if (sort == "lowprice") {
-            products = products.sort((a, b) => a.price - b.price);
-        } else if (sort == "highprice") {
-            products = products.sort((a, b) => b.price - a.price);
-        } else {
-            products = products.sort((a, b) => b.sales - a.sales);
-        }
 
         return [products, pages];
     } catch (error) {
