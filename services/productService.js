@@ -80,7 +80,7 @@ const SearchProduct = async (reqPage, query, search, sort) => {
         for (let i = 0; i < products.length / perPage; i++) {
             let temp = {};
             temp.page = i + 1;
-            temp.pageA = `?${"search=" + search +"&"}page=${i + 1}`;
+            temp.pageA = `?search=${search}&sort=${sort}&page=${i + 1}`;
             pages.push(temp);
         }
         products = products.slice(start, end);
