@@ -35,7 +35,7 @@ const getListProduct = async (reqPage) => {
 }
 }
 
-const SearchProduct = async (reqPage, query, search) => {
+const SearchProduct = async (reqPage, query, search, sort) => {
     let products = [];
     let pages = [];
 
@@ -49,7 +49,7 @@ const SearchProduct = async (reqPage, query, search) => {
         for (let i = 0; i < products.length / perPage; i++) {
             let temp = {};
             temp.page = i + 1;
-            temp.pageA = `?${"search=" + search +"&"}page=${i + 1}`;
+            temp.pageA = `?${"search=" + search +"&"}${"sort=" + sort + "&"}page=${i + 1}`;
             pages.push(temp);
         }
         products = products.slice(start, end);
@@ -59,7 +59,23 @@ const SearchProduct = async (reqPage, query, search) => {
             let slug = "/product/" + item.slug;
            return { ...item, name: name, slug: slug }
         })
-        products = products.sort((a, b) => b.sales - a.sales);
+
+        if (sort == "newproduct") {
+            products.sort(function(a, b) {
+            var keyA = new Date(a.createdAt),
+              keyB = new Date(b.createdAt);
+            if (keyA < keyB) return -1;
+            if (keyA > keyB) return 1;
+            return 0;
+            });
+        } else if (sort == "lowprice") {
+            products = products.sort((a, b) => a.price - b.price);
+        } else if (sort == "highprice") {
+            products = products.sort((a, b) => b.price - a.price);
+        } else {
+            products = products.sort((a, b) => b.sales - a.sales);
+        }
+
         return [products, pages];
     } catch (error) {
         console.log(error)

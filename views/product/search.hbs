@@ -1,12 +1,10 @@
-
-
 <div class="ourproduct">
 
-    <div class="SortOptions">
-        <button type="button" class="btn btn-info m-2 sort" data-sort="sales">Best Selling</button>
-        <button type="button" class="btn btn-info m-2 sort" data-sort="createdAt">New Items</button>
-        <button type="button" class="btn btn-info m-2 sort" data-sort="price">Low Price </button>
-        <button type="button" class="btn btn-info m-2 sort" data-sort="price" data-sort-order="desc">High Price</button>
+    <div class="SortOptions mt-2">
+        <a href={{this.pageA}} sort="bestselling" class="btn-info m-2 p-2">Best Selling</a>
+        <a href={{this.pageA}} sort="newproduct" class="btn-info m-2 p-2">New Items</a>
+        <a href={{this.pageA}} sort="lowprice" class="btn-info m-2 p-2">Low Price </a>
+        <a href={{this.pageA}} sort="highprice" class="btn-info m-2 p-2">High Price</a>
     </div>
 
     <div class="container">
