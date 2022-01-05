@@ -25,8 +25,8 @@ const checkOut=async (userid,cardNumber)=>{
         await new_order.save();
         for(let j = 0; j < cartUser.cart[i].items.length; j++){
             var book=await product.findOne({_id:cartUser.cart[i].items[j].id});
-            book.amount=book.amount-1;
-            book.sale=book.sale+1;
+            book.amount=book.amount-cartUser.cart[i].items[j].quantity;
+            book.sale=book.sale+cartUser.cart[i].items[j].quantity;
             await book.markModified('amount');
             await book.markModified('sale');
             await book.save();
