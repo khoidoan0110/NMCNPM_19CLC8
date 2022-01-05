@@ -5,6 +5,37 @@ const multer = require('multer');
 const upload = multer({dest: 'uploads/'});
 const fs = require('fs');
 
+function shuffle(array) {
+    let currentIndex = array.length, randomIndex;
+    while (currentIndex != 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+    }
+    return array;
+}
+
+const getRandomProduct = async() => {
+    try {
+        let random_product = await product.find({});
+        shuffle(random_product);
+        random_product = random_product.slice(0,1);
+        return random_product; 
+    }
+    catch(err) {console.log(err)};
+}
+
+const getFeaturedProduct = async() => {
+    try {
+        let random_product = await product.find({});
+        shuffle(random_product);
+        random_product = random_product.slice(0,4);
+        return random_product; 
+    }
+    catch(err) {console.log(err)};
+}
+
 const getListProduct = async (reqPage) => {
     let products = [];
     let pages = [];
@@ -191,4 +222,6 @@ module.exports = {
     deleleProduct,
     getEditProduct,
     updateProduct,
+    getRandomProduct,
+    getFeaturedProduct,
 }

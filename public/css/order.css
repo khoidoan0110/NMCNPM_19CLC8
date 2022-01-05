@@ -113,7 +113,10 @@ td{
     border: 1px black;
     border-style: solid;
     border-right-width: 1px;
-    background-color: lime;
+    background-color: #48AAAD;
+    color: white;
+    font-weight: bold;
+    text-indent: 8px;
 }
 
 .apply_voucher:after {
@@ -123,7 +126,7 @@ td{
     right: 0;
 }
 .apply_voucher:hover, .apply_voucher:focus, .apply_voucher:active {
-    background: #f69679;
+    background: rgb(128, 202, 248);
 }
 .apply_voucher:hover:after, .apply_voucher:focus:after, .apply_voucher:active:after {
     right: -5px;
